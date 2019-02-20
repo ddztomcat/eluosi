@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+
+  <body>
+    <div class="gameCanvasWrapper">
+      <canvas id="gameCanvas" width="550" height="750">
+        Canvas not supported
+      </canvas>
+      <div class="infoWrapper">
+        <div class="source">
+          <span>分数：</span>
+          <span id="source"></span>
+        </div>
+        <div class="fps">
+          <span>FPS：</span>
+          <span id="fps"></span>
+        </div>
+        <div class="fps">
+          <span>游戏时长：</span>
+          <span id="gameTime"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="loadingToast">
+      <span>俄罗斯方块</span>
+
+      <span>
+        <ul>
+          <li>TypeScript</li>
+          <li>Canvas</li>
+        </ul>
+      </span>
+      <input type="button" id="loadButton" value="开始游戏" autofocus="true" />
+
+      <div id="progressDiv"></div>
+    </div>
+    <div id="restart" class="gameOverWrapper">
+      继续游戏
+    </div>
+    <p id="gameOver"></p>
+  </body>
+</html>

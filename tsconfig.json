@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+      "module": "es6",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "strict": true,
+      "target": "es6",
+      "outDir": "./dist/",
+      "baseUrl": ".",
+      "paths": {
+          "@lib/*": ["src/lib/*"]
+      }
+  },
+  "include": [
+      "src/**/*"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
+}
