@@ -2,6 +2,10 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin');
+const pro = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: './src/app.ts',
   module: {
@@ -13,16 +17,30 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        use: [pro ? MiniCssExtractPlugin.loader : 'style-loader' , 'css-loader']
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [
+          pro ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader?outputPath=images']
       }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: { drop_console: true }
+        }
+      }),
+      new OptimizeCSSAssetsPlugin({})
     ]
   },
   resolve: {
@@ -32,15 +50,15 @@ module.exports = {
     }
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: pro ? '[name].[hash].js' : 'bundle.js',
+    path: path.resolve(__dirname, 'docs')
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: pro ? '[name].[hash].css': '[name].css',
+      chunkFilename: pro ? '[id].[hash].css': '[id].css'
     }),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['docs']),
     new HtmlWebpackPlugin({
       title: 'eluosi',
       template: 'index.html'

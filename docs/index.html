@@ -2,13 +2,32 @@
 <html>
   <head>
     <title>eluosi</title>
-  <link href="main.css" rel="stylesheet"></head>
+  <link href="main.9e95fa0b20c043ddee85.css" rel="stylesheet"></head>
 
   <body>
     <div class="gameCanvasWrapper">
-      <canvas id="gameCanvas" width="550" height="750">
-        Canvas not supported
-      </canvas>
+      <div class="canvasWrapper">
+        <canvas id="gameCanvas" width="550" height="750">
+          Canvas not supported
+        </canvas>
+        <div id="loadingToast">
+          <span>俄罗斯方块</span>
+          <span>
+            <ul>
+              <li>TypeScript</li>
+              <li>Canvas</li>
+            </ul>
+          </span>
+          <input
+            type="button"
+            id="loadButton"
+            value="开始游戏"
+            autofocus="true"
+          />
+          <div id="progressDiv"></div>
+        </div>
+      </div>
+
       <div class="infoWrapper">
         <div class="source">
           <span>分数：</span>
@@ -25,22 +44,9 @@
       </div>
     </div>
 
-    <div id="loadingToast">
-      <span>俄罗斯方块</span>
-
-      <span>
-        <ul>
-          <li>TypeScript</li>
-          <li>Canvas</li>
-        </ul>
-      </span>
-      <input type="button" id="loadButton" value="开始游戏" autofocus="true" />
-
-      <div id="progressDiv"></div>
-    </div>
     <div id="restart" class="gameOverWrapper">
       继续游戏
     </div>
     <p id="gameOver"></p>
-  <script type="text/javascript" src="bundle.js"></script></body>
+  <script type="text/javascript" src="main.9e95fa0b20c043ddee85.js"></script></body>
 </html>

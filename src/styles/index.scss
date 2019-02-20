@@ -23,6 +23,9 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  .canvasWrapper {
+    position: relative;
+  }
   .infoWrapper {
     .source, .fps {
       display: flex;

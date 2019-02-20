@@ -6,9 +6,28 @@
 
   <body>
     <div class="gameCanvasWrapper">
-      <canvas id="gameCanvas" width="550" height="750">
-        Canvas not supported
-      </canvas>
+      <div class="canvasWrapper">
+        <canvas id="gameCanvas" width="550" height="750">
+          Canvas not supported
+        </canvas>
+        <div id="loadingToast">
+          <span>俄罗斯方块</span>
+          <span>
+            <ul>
+              <li>TypeScript</li>
+              <li>Canvas</li>
+            </ul>
+          </span>
+          <input
+            type="button"
+            id="loadButton"
+            value="开始游戏"
+            autofocus="true"
+          />
+          <div id="progressDiv"></div>
+        </div>
+      </div>
+
       <div class="infoWrapper">
         <div class="source">
           <span>分数：</span>
@@ -25,19 +44,6 @@
       </div>
     </div>
 
-    <div id="loadingToast">
-      <span>俄罗斯方块</span>
-
-      <span>
-        <ul>
-          <li>TypeScript</li>
-          <li>Canvas</li>
-        </ul>
-      </span>
-      <input type="button" id="loadButton" value="开始游戏" autofocus="true" />
-
-      <div id="progressDiv"></div>
-    </div>
     <div id="restart" class="gameOverWrapper">
       继续游戏
     </div>
