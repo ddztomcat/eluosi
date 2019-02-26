@@ -7,14 +7,31 @@ import {
   SquareSpritePainter
 } from './components/square/index'
 import './styles/index.scss'
+import { isPhone, bingEvent } from './utils/index'
+let cas = <HTMLCanvasElement>document.getElementById('gameCanvas'), pw = 0, ph = 0
+let acw = <HTMLElement>document.querySelector('.actions')
+
+if(isPhone()) {
+  cas.width = 275
+  cas.height = 375
+  pw = 150
+  ph = 25
+  acw.style.display = 'block'
+}else {
+  cas.width = 550
+  cas.height = 750
+  pw = 300
+  ph = 25
+  acw.style.display = 'none'
+}
 
 let game = new EluosiGame('俄罗斯方块', 'gameCanvas'),
   loadingToast = <HTMLElement>document.getElementById('loadingToast'),
   loadButton = <HTMLElement>document.getElementById('loadButton'),
   progressDiv = <HTMLElement>document.getElementById('progressDiv'),
   progressbar = new ProgressBar(
-    300,
-    25,
+    pw,
+    ph,
     'rgba(0,0,0,0.5)',
     '#ef4510',
     '#00964b'
@@ -26,6 +43,24 @@ let game = new EluosiGame('俄罗斯方块', 'gameCanvas'),
   gameOver = <HTMLElement>document.getElementById('gameOver')
   gameOver.style.display = 'none'
   restart.style.display = 'none'
+  let up = <HTMLElement>document.querySelector('.act-btn.up')
+  let down = <HTMLElement>document.querySelector('.act-btn.down')
+  let left = <HTMLElement>document.querySelector('.act-btn.left')
+  let right = <HTMLElement>document.querySelector('.act-btn.right')
+
+  bingEvent(up, 'click', () => {
+    game.keyPressed({keyCode: 38})
+  })
+ 
+  bingEvent(down, 'click', () => {
+    game.keyPressed({keyCode: 40})
+  })
+  bingEvent(left, 'click', () => {
+    game.keyPressed({keyCode: 37})
+  })
+  bingEvent(right, 'click', () => {
+    game.keyPressed({keyCode: 39})
+  })
 restart.addEventListener('click', function() {
   setTimeout(() => {
     game.restart()

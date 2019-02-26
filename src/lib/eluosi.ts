@@ -35,6 +35,8 @@ export class EluosiGame extends Game {
 
   constructor(name: string, canvasId: string) {
     super(name, canvasId)
+    this.GAP = Math.ceil(this.width * 0.0109)
+    this.SQUARE_PADDING = Math.ceil(this.GAP * 2 / 3)
     this.SQUARE_WEIGHT =
       (this.width - this.GAP * (this.SQUARE_LENGTH + 1)) / this.SQUARE_LENGTH
     this.SQUARE_HEIGHT =
@@ -52,6 +54,7 @@ export class EluosiGame extends Game {
         }
       }
     }
+    console.log(this.squareArr, this.SQUARE_WEIGHT, this.SQUARE_HEIGHT, this.width, this.height)
     this.endAnimateIndex = this.SQUARE_LENGTH * 2
   }
   scrollBackground() {
@@ -272,26 +275,11 @@ export class EluosiGame extends Game {
     this.endGameAnimate = 0
     this.endAnimateIndex = this.SQUARE_LENGTH * 2
   }
-  keyPressed(e: KeyboardEvent) {
+  keyPressed(e: any) {
     let key: string = ''
     let res
 
     switch (e.keyCode) {
-      case 32:
-        key = 'space'
-        break
-      case 68:
-        key = 'd'
-        break
-      case 75:
-        key = 'k'
-        break
-      case 83:
-        key = 's'
-        break
-      case 80:
-        key = 'p'
-        break
       case 37:
         key = 'left'
         break
