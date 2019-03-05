@@ -173,7 +173,7 @@ export class SquareSprite extends Sprite {
     let type = Math.ceil(Math.random() * 100) % this.TYPE_COUNT + 1
     console.log(type)
     this.setRotate(0)
-    this.setPosition(0, 5)
+    this.setPosition(0, 4)
     this.init(type)
     this.setWH()
   }

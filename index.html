@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
+    />
     <title><%= htmlWebpackPlugin.options.title %></title>
     <script type="text/javascript">
-      ; (function (unit) { function reset() { window.HTML = { el: document.documentElement, width: document.documentElement.clientWidth || window.innerWidth, height: document.documentElement.clientHeight || window.innerHeight }; window.HTML.el.style.fontSize = HTML.width * unit / 375 + "px" } reset(); document.addEventListener("DOMContentLoaded", function () { reset() }); document.addEventListener("WeixinJSBridgeReady", function () { reset() }, false); window.addEventListener("pageshow", function () { reset() }); window.addEventListener("load", function () { reset() }); window.addEventListener("resize", function () { setTimeout(function () { reset() }, 30) }) })(20);
+      ;(function(unit) {
+        function reset() {
+          window.HTML = {
+            el: document.documentElement,
+            width: document.documentElement.clientWidth || window.innerWidth,
+            height: document.documentElement.clientHeight || window.innerHeight
+          }
+          window.HTML.el.style.fontSize = (HTML.width * unit) / 375 + 'px'
+        }
+        reset()
+        document.addEventListener('DOMContentLoaded', function() {
+          reset()
+        })
+        document.addEventListener(
+          'WeixinJSBridgeReady',
+          function() {
+            reset()
+          },
+          false
+        )
+        window.addEventListener('pageshow', function() {
+          reset()
+        })
+        window.addEventListener('load', function() {
+          reset()
+        })
+        window.addEventListener('resize', function() {
+          setTimeout(function() {
+            reset()
+          }, 30)
+        })
+      })(20)
     </script>
   </head>
 
@@ -28,8 +62,14 @@
             value="开始游戏"
             autofocus="true"
           />
-          <div id="progressDiv"></div>
+          <div id="progressDiv">
+            <canvas id="canvasProgressBar"></canvas>
+          </div>
         </div>
+        <div id="restart" class="gameOverWrapper">
+          继续游戏
+        </div>
+        <p id="gameOver"></p>
       </div>
 
       <div class="infoWrapper">
@@ -48,10 +88,6 @@
       </div>
     </div>
 
-    <div id="restart" class="gameOverWrapper">
-      继续游戏
-    </div>
-    <p id="gameOver"></p>
     <div class="actions">
       <button class="act-btn up">旋转</button>
       <button class="act-btn down">down</button>

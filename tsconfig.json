@@ -6,12 +6,13 @@
       "preserveConstEnums": true,
       "sourceMap": true,
       "strict": true,
-      "target": "es6",
+      "target": "es5",
       "outDir": "./dist/",
       "baseUrl": ".",
       "paths": {
           "@lib/*": ["src/lib/*"]
-      }
+      },
+      "lib": ["es2015", "es2017", "dom"]
   },
   "include": [
       "src/**/*"

@@ -8,6 +8,8 @@ import {
 } from './components/square/index'
 import './styles/index.scss'
 import { isPhone, bingEvent } from './utils/index'
+import Vsconsole from 'vconsole'
+new Vsconsole()
 interface EventAction {
   target: HTMLElement
   id: number
@@ -46,18 +48,15 @@ let res = [
 let t = Date.now()
 
 if (isPhone()) {
-  cas.width = 275
-  cas.height = 375
-  pw = 150
-  ph = 25
   acw.style.display = 'block'
 } else {
-  cas.width = 550
-  cas.height = 750
-  pw = 300
-  ph = 25
   acw.style.display = 'none'
 }
+cas.width = 550
+cas.height = 750
+pw = 300
+ph = 25
+
 let progressbar = new ProgressBar(
   pw,
   ph,
@@ -72,7 +71,7 @@ let sp = new SquareSprite(
   [SquareSpriteBehavior],
   game,
   1,
-  { x: 0, y: 5 }
+  { x: 0, y: 4 }
 )
 const frep = 50
 const ed: OperationArray = {
@@ -112,14 +111,23 @@ const ed: OperationArray = {
 gameOver.style.display = 'none'
 restart.style.display = 'none'
 
-
-
 for (let key in ed) {
+  bingEvent(ed[key].target, 'contextmenu', (e: Event) => {
+    e.preventDefault();
+    console.log('销毁')
+    clearInterval(ed[key].id)
+  })
   bingEvent(ed[key].target, 'touchstart', () => {
+    console.log('出发')
     ed[key].action()
     ed[key].id = setInterval(ed[key].action, ed[key].interval)
   })
+  bingEvent(ed[key].target, 'touchmove', () => {
+    console.log('销毁')
+    clearInterval(ed[key].id)
+  })
   bingEvent(ed[key].target, 'touchend', () => {
+    console.log('销毁')
     clearInterval(ed[key].id)
   })
 }
@@ -176,4 +184,4 @@ setInterval(() => {
 game.addEventListener(Events)
 game.addSprite(sp)
 game.paintBackSquare(game.context)
-// game.start()
+

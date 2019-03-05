@@ -17,9 +17,7 @@ export class ProgressBar {
     afterFillStyle: string
   ) {
     this.domElement = document.createElement('div')
-    let t = <CanvasRenderingContext2D>(
-      document.createElement('canvas').getContext('2d')
-    )
+    let t = <CanvasRenderingContext2D>(<HTMLCanvasElement>(document.getElementById('canvasProgressBar'))).getContext('2d')
     this.context = t
     this.cornerRadius = height / 2
     this.RIGHT = this.LEFT + this.cornerRadius * 2 + width

@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
 const pro = process.env.NODE_ENV !== 'production'
 module.exports = {
-  entry: './src/app.ts',
+  entry: ['core-js', './src/app.ts'],
   module: {
     rules: [
       {
