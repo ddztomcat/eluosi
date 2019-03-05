@@ -100,6 +100,7 @@ input {
 #canvasProgressBar {
   width: to-rem(150);
   height: 25px;
+  max-width: 300px;
 }
 #gameOver {
   display: none;
