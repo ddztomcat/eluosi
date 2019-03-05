@@ -18,4 +18,4 @@ Typescript + Canvas  [游戏预览](https://ddztomcat.github.io/eluosi/)
 + [ ] 事件出发优化
 ### changelog
 + 增加移动端操作按钮 2019.2.26
-+ 改成rem 2019.3.5
++ 改成rem 增加core-js 垫片 2019.3.5
